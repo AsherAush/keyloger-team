@@ -1,12 +1,19 @@
 class Encryption:
-    def __init__(self):
-        pass
+    def __init__(self, xor):
+        self.xor = xor
+
     """פונקציה הצפנה לאסקי """
-    def Receiving_information(self, information: str):
-        ASCII_encrypted_list = []
-        for cha in information:
-            ASCII_encrypted_list.append(ord(cha))
-        return ASCII_encrypted_list
+
+    def xor_encryption(self, data):
+        return "".join(chr(ord(c) ^ self.xor) for c in data)
+
+    """פןנקציה לפענוח ההצפנה """
+
+    def xor_decryption(self, data):
+        return "".join(chr(ord(c) ^ self.xor) for c in data)
+
 
 """ בדיקת פונקציה """
-print(Encryption().Receiving_information("asher zeev aush"))
+a = Encryption(3).xor_encryption("asher zeev aush")
+print(a)
+print(Encryption(3).xor_decryption(a))
