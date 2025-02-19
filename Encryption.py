@@ -1,5 +1,5 @@
 class Encryption:
-    def __init__(self, xor):
+    def __init__(self, xor ):
         self.xor = xor
 
     """פונקציה הצפנה לאסקי """
