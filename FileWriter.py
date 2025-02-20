@@ -7,5 +7,3 @@ class FileWrite(IWriter):
         with open(f"{machine_name}.json", "w") as file:
             file.write(data)
 
-file_writer = FileWrite()
-file_writer.send_data("shlomo wind","name")
