@@ -1,2 +1,3 @@
-git rm -r --cached .idea
-git rm --cached *.iml
+# Ignore IntelliJ IDEA project files
+.idea/
+*.iml
