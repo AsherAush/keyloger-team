@@ -14,6 +14,6 @@ class Encryption:
 
 
 """ בדיקת פונקציה """
-a = Encryption(3).xor_encryption("asher zeev aush")
-print(a)
-print(Encryption(3).xor_decryption(a))
+# a = Encryption(3).xor_encryption("asher zeev aush")
+# print(a)
+# print(Encryption(3).xor_decryption(a))
