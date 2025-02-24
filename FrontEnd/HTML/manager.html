@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Computer management</title>
+     <link rel="stylesheet" href="styles.css">
+    <style>
+         body {
+            text-align: center; /* ממרכז את התוכן */
+            margin-top: 50px;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        button {
+            background-color: #007bff; /* צבע רקע לכפתור */
+            color: white; /* צבע טקסט */
+            border: none;
+            padding: 15px 30px; /* כפתור גדול יותר */
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 200px; /* קובע רוחב קבוע לכל הכפתורים */
+        }
+
+        button:hover {
+            background-color: #0056b3; /* צבע רקע כשהעכבר מעל */
+        }
+
+        /* עיצוב הרשימה */
+        #computerList {
+            margin-top: 20px;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            width: 300px;
+            margin: auto;
+            text-align: right;
+            display: none;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background: #e0e0e0;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>ניהול מחשבים</h1>
+
+    <div class="container">
+        <button onclick="showComputersList()">📋 רשימת מחשבים</button>
+        <button onclick="addComputer()">➕ הוסף מחשב</button>
+    </div>
+    <div id="addComputerForm" style="display: none; margin-top: 20px;">
+    <input type="text" id="computerName" placeholder="הכנס שם מחשב..." style="padding: 10px; width: 200px;">
+    <button onclick="saveComputer()" style="padding: 10px; background-color: green; color: white; border: none; cursor: pointer;">✅ אישור</button>
+</div>
+
+    <div id="computerList">
+        <h2>רשימת מחשבים</h2>
+        <ul id="computers"></ul>
+    </div>
+
+    <script>
+        let computers = ["מחשב 1", "מחשב 2", "מחשב 3"]; // רשימת מחשבים ראשונית
+
+        function showComputersList() {
+    let listDiv = document.getElementById("computerList");
+
+    // אם הרשימה מוצגת - הסתר אותה, אחרת הצג אותה
+    if (listDiv.style.display === "block") {
+        listDiv.style.display = "none"; // מסתיר את הרשימה
+    } else {
+        let list = document.getElementById("computers");
+        list.innerHTML = ""; // מנקה את הרשימה לפני שמוסיפים מחדש
+
+        computers.forEach(computer => {
+            let li = document.createElement("li");
+            li.textContent = computer;
+            list.appendChild(li);
+        });
+
+        listDiv.style.display = "block"; // מציג את הרשימה
+    }
+}
+
+
+        function addComputer() {
+    let form = document.getElementById("addComputerForm");
+
+    // אם הטופס כבר מוצג - הסתר אותו, אחרת הצג אותו
+    if (form.style.display === "block") {
+        form.style.display = "none";
+    } else {
+        form.style.display = "block";
+    }
+}
+    function saveComputer() {
+    let input = document.getElementById("computerName");
+    let newComputer = input.value.trim(); // לוקח את הטקסט ומסיר רווחים מיותרים
+
+    if (newComputer) {
+        computers.push(newComputer); // מוסיף לרשימה
+        input.value = ""; // מנקה את השדה אחרי ההוספה
+        document.getElementById("addComputerForm").style.display = "none"; // מסתיר את הטופס
+        showComputersList(); // מעדכן את הרשימה על המסך
+    } else {
+        alert("אנא הכנס שם מחשב תקין!");
+    }
+}
+
+    </script>
+
+
+
+</body>
+</html>

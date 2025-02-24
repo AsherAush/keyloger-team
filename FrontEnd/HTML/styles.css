@@ -2,6 +2,7 @@ body {
     background-image: url("רקע.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    height: auto;
 }
 #user-details{
     width: 400px;
