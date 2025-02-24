@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ניהול מחשבים</title>
+    <link rel="stylesheet" href="styles1.css">
+</head>
+<body>
+    <div id="mainContainer">
+        <h1>ניהול מחשבים</h1>
+        <div class="container">
+            <button onclick="showComputersList(event)"> רשימת מחשבים</button>
+            <button onclick="addComputer(event)"> הוסף מחשב</button>
+        </div>
+
+        <div id="computerListContainer">
+            <h2> מחשבים זמינים</h2>
+            <ul id="computers"></ul>
+        </div>
+
+        <div id="addComputerForm">
+            <h2>הוספת מחשב</h2>
+            <input type="text" id="computerName"  placeholder="שם המחשב">
+            <br>
+            <button class="save-btn" onclick="saveComputer()"> שמור</button>
+        </div>
+
+        <div id="confirmationPopup">
+            <p> האם אתה בטוח שברצונך למחוק את המחשב?</p>
+            <button class="confirm-btn" onclick="confirmDelete()">כן</button>
+            <button class="cancel-btn" onclick="cancelDelete()"> לא</button>
+        </div>
+    </div>
+
+    <script src="javascriptcode.js"></script>
+</body>
+</html>
