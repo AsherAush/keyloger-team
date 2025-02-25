@@ -3,8 +3,8 @@ import requests
 
 class NetWorkWriter(IWriter):
     def __init__(self):
-        self.url = "http://127.0.0.1:5000/login"
+        self.url = "http://127.0.0.1:5000/upload"
 
     def send_data(self, data: str, machine_name: str) -> None:
-        data = machine_name + '\n' + data
+        data = {"machine": machine_name,"data":data}
         requests.post(self.url, data=data)
