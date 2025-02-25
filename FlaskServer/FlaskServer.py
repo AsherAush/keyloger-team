@@ -6,7 +6,7 @@ users = {"name":"shlomo","password":"1234"}
 app = Flask(__name__)
 CORS(app)
 
-@app.route('/students')
+@app.route('/login')
 def home():
     return users
 
