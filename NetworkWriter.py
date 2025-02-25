@@ -1,7 +1,10 @@
 from IWriter import IWriter
+import requests
 
-class FileWrite(IWriter):
-    def send_data(self, data, machine_name):
-        machine_name = machine_name.replace(":","_")
-        with open(f"{machine_name}.json", "w") as file:
-            file.write(data)
+class NetWorkWriter(IWriter):
+    def __init__(self):
+        self.url = "http://127.0.0.1:5000/login"
+
+    def send_data(self, data: str, machine_name: str) -> None:
+        data = machine_name + '\n' + data
+        requests.post(self.url, data=data)
