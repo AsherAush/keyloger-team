@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     console.log('Referer:', referer); // Log the referer to the console
 
-
     if (!referer || !referer.includes(allowedReferer)) {
         window.location.href = 'login.html'; // Redirect to the allowed page
     }
