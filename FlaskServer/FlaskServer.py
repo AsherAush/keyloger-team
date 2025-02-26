@@ -3,7 +3,6 @@ from flask_cors import CORS
 import os
 import time
 
-
 users = [{"name":"shlomo","password":"123"},{"name":"asher","password":"456"},{"name":"arie","password":"789"}]
 app = Flask(__name__)
 CORS(app)
@@ -19,6 +18,11 @@ def login():
         if data["name"] == user["name"] and data["password"] == user["password"]:
             return jsonify({"status": "success"}), 200
     return jsonify({"error": "Invalid credentials"}), 401
+
+@app.route('/api/computerList', methods=['GET'])
+def get_computer_list():
+    computers = ["Computer1", "Computer2", "Computer3"]  # Replace with your actual computer list
+    return jsonify(computers), 200
 
 @app.route('/api/upload', methods=['POST'])
 def upload():
