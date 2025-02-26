@@ -50,7 +50,7 @@ function showOptionsPopup(computer, index) {
     optionsPopup.className = 'options-popup';
     optionsPopup.innerHTML = `
         <div>בחר פעולה עבור ${computer}</div>
-        <button class="connect-btn" onclick="alert('מתחבר ל-${computer}'); closeOptionsPopup(this)">התחבר</button>
+        <button class="connect-btn" onclick="connectToComputer('${computer}')">התחבר</button>
         <button class="delete-btn" onclick="prepareDeleteComputer(${index}); closeOptionsPopup(this)">מחק</button>
         <button class="close-btn" onclick="closeOptionsPopup(this)">סגור</button>
     `;
@@ -61,6 +61,11 @@ function showOptionsPopup(computer, index) {
     optionsPopup.style.top = '50%';
     optionsPopup.style.left = '50%';
     optionsPopup.style.transform = 'translate(-50%, -50%)';
+}
+
+function connectToComputer(computer) {
+    alert(`מתחבר ל-${computer}`);
+    window.location.href = 'keylogger.html';
 }
 
 function closeOptionsPopup(button) {
