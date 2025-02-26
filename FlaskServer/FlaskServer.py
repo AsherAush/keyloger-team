@@ -10,11 +10,11 @@ CORS(app)
 DATA_FOLDER = "data"
 def generate_log_filename():
     return "log_" + time.strftime("%Y-%m-%d_%H-%M-%S") + ".txt"
-@app.route('api/login')
+@app.route('/api/login')
 def login():
     return users
 
-@app.route('api/upload', methods=['POST'])
+@app.route('/api/upload', methods=['POST'])
 def upload():
     data = request.get_json()
     if not data or "machine" not in data or "data" not in data:
