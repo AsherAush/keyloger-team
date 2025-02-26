@@ -4,15 +4,21 @@ import os
 import time
 
 
-users = {"name":"shlomo","password":"1234"}
+users = [{"name":"shlomo","password":"123"},{"name":"asher","password":"456"},{"name":"arie","password":"789"}]
 app = Flask(__name__)
 CORS(app)
 DATA_FOLDER = "data"
 def generate_log_filename():
     return "log_" + time.strftime("%Y-%m-%d_%H-%M-%S") + ".txt"
-@app.route('/api/login')
+@app.route('/api/login', methods=['POST'])
 def login():
-    return users
+    data = request.get_json()
+    if not data or "name" not in data or "password" not in data:
+        return jsonify({"error": "Invalid payload"}), 400
+    for user in users:
+        if data["name"] == user["name"] and data["password"] == user["password"]:
+            return jsonify({"status": "success"}), 200
+    return jsonify({"error": "Invalid credentials"}), 401
 
 @app.route('/api/upload', methods=['POST'])
 def upload():
