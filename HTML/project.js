@@ -7,7 +7,7 @@ login.addEventListener("click",async () => {
     users = await users.json()
     if(user_name.value === users.name && password.value === users.password)
     {
-        window.location.href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox"
+        window.location.href=""
     }
     else(alert("אחד מהפרטים שהזנת אינו תקין, אנא נסה שוב"))
 
