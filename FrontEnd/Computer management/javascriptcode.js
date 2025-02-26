@@ -15,13 +15,14 @@ function showComputersList(event) {
 
 // Close the computer list when clicking outside of it
 document.addEventListener('DOMContentLoaded', function() {
-    const allowedReferer = '/FrontEnd/HTML/login.html'; // Replace with your allowed referer URL
+    const allowedReferer = 'login.html'; // Replace with your allowed referer URL
     const referer = document.referrer;
 
     console.log('Referer:', referer); // Log the referer to the console
 
+
     if (!referer || !referer.includes(allowedReferer)) {
-        window.location.href = '/FrontEnd/HTML/login.html'; // Redirect to the allowed page
+        window.location.href = 'login.html'; // Redirect to the allowed page
     }
 });
 function prepareDeleteComputer(index) {

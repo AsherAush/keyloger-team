@@ -17,7 +17,7 @@ login.addEventListener("click", async () => {
     let result = await response.json();
 
     if (response.ok) {
-        window.location.href = "../Computer management/htmlCode.html";
+        window.location.href = "htmlCode.html";
     } else {
         alert("אחד מהפרטים שהזנת אינו תקין, אנא נסה שוב");
     }
