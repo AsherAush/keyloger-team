@@ -3,7 +3,7 @@ let password = document.getElementById("pass")
 let login = document.getElementById("login-btn")
 
 login.addEventListener("click",async () => {
-    let users = await fetch("http://127.0.0.1:5000/login")
+    let users = await fetch("http://127.0.0.1:5000/api/login")
     users = await users.json()
     if(user_name.value === users.name && password.value === users.password)
     {
