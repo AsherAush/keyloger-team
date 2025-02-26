@@ -1,0 +1,43 @@
+
+body {
+    background-image: url("Key.gif");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center top;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+
+.buttons-container {
+    text-align: center;
+    background: rgba(23, 22, 22, 0.116);
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(234, 212, 212, 0.635);
+}
+
+
+
+
+
+.button {
+    background: rgba(30, 29, 31, 0.8); 
+    
+    color: white;
+    font-size: 50px; 
+    padding: 25px 50px; 
+    border-radius: 20px; 
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 20px rgba(150, 0, 255, 0.9);
+    margin: 10px; 
+    font-weight: bold;
+}
+
