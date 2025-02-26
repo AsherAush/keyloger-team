@@ -14,11 +14,12 @@ function showComputersList(event) {
 }
 
 // Close the computer list when clicking outside of it
-document.addEventListener('click', function(event) {
-    const computerListContainer = document.getElementById('computerListContainer');
-    const button = document.querySelector('.container button');
-    if (!computerListContainer.contains(event.target) && !button.contains(event.target)) {
-        computerListContainer.style.display = 'none';
+document.addEventListener('DOMContentLoaded', function() {
+    const allowedReferer = '/FrontEnd/HTML/login.html'; // Replace with your allowed referer URL
+    const referer = document.referrer;
+
+    if (!referer.includes(allowedReferer)) {
+        window.location.href = '../FrontEnd/HTML/login.html'; // Redirect to the allowed page
     }
 });
 
