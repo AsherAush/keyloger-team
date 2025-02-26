@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const referer = document.referrer;
 
     if (referer && !referer.includes(allowedReferer)) {
-        window.location.href = 'https://music.youtube.com/';
+        window.location.href = '../FrontEnd/HTML/login.html';
     }
 });
 function prepareDeleteComputer(index) {
