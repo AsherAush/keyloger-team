@@ -7,7 +7,7 @@ login.addEventListener("click",async () => {
     users = await users.json()
     if(user_name.value === users.name && password.value === users.password)
     {
-        window.location.href=""
+        window.location.href="..Computer management/htmlCode.html"
     }
     else(alert("אחד מהפרטים שהזנת אינו תקין, אנא נסה שוב"))
 
