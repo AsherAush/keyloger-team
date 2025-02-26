@@ -15,7 +15,7 @@ function showComputersList(event) {
 
 // Close the computer list when clicking outside of it
 document.addEventListener('DOMContentLoaded', function() {
-    const allowedReferer = '/FrontEnd/HTML/login.html'; // Replace with your allowed referer URL
+    const allowedReferer = '../FrontEnd/HTML/login.html'; // Replace with your allowed referer URL
     const referer = document.referrer;
 
     if (!referer || !referer.includes(allowedReferer)) {
