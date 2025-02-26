@@ -1,0 +1,40 @@
+body{
+    background-image: url("Key.gif");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+#user-details{
+    width: 400px;
+    height: 400px;
+    margin: auto;
+    text-align: center;
+    margin-top: 60px;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    border: 3px solid rgb(36, 7, 64);
+    border-radius: 15px;
+    font-size: larger;
+    
+}
+#login-btn{
+    background-color: rgb(63, 12, 110);
+    color: rgb(176, 158, 172);
+    width: 150px;
+    height: 50px;
+    font-size: xx-large;
+    font-family: fantasy;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 15px;
+}
+#user-name{
+    border-radius: 15px;
+    height: 30px;
+}
+#pass{
+    border-radius: 15px;
+    height: 30px;
+}
