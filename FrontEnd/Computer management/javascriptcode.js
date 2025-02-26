@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const allowedReferer = '../FrontEnd/HTML/login.html';
     const referer = document.referrer;
 
-    if (referer || !referer.includes(allowedReferer)) {
+    if (referer && !referer.includes(allowedReferer)) {
         window.location.href = 'https://music.youtube.com/';
     }
 });
