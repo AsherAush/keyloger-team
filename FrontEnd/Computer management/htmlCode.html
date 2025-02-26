@@ -7,24 +7,24 @@
     <link rel="stylesheet" href="styles1.css">
 </head>
 <body>
-    <div id="mainContainer">
-        <h1>ניהול מחשבים</h1>
-        <div class="container">
-            <button onclick="showComputersList(event)"> רשימת מחשבים</button>
-        </div>
-
-        <div id="computerListContainer">
-            <h2> מחשבים זמינים</h2>
-            <ul id="computers"></ul>
-        </div>
-
-        <div id="confirmationPopup">
-            <p> האם אתה בטוח שברצונך למחוק את המחשב?</p>
-            <button class="confirm-btn" onclick="confirmDelete()">כן</button>
-            <button class="cancel-btn" onclick="cancelDelete()"> לא</button>
-        </div>
+<div id="mainContainer">
+    <h1>ניהול מחשבים</h1>
+    <div class="container">
+        <button onclick="showComputersList(event)">רשימת מחשבים</button>
     </div>
 
-    <script src="javascriptcode.js"></script>
+    <div id="computerListContainer">
+        <h2>מחשבים זמינים</h2>
+        <ul id="computers"></ul>
+    </div>
+    <div id="confirmationPopup">
+
+        <p>האם אתה בטוח שברצונך למחוק את המחשב?</p>
+        <button class="confirm-btn" onclick="confirmDelete()">כן</button>
+        <button class="cancel-btn" onclick="cancelDelete()">לא</button>
+    </div>
+</div>
+
+<script src="javascriptcode.js"></script>
 </body>
 </html>
