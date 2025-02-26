@@ -18,11 +18,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const allowedReferer = '/FrontEnd/HTML/login.html'; // Replace with your allowed referer URL
     const referer = document.referrer;
 
-    if (!referer.includes(allowedReferer)) {
+    if (!referer || !referer.includes(allowedReferer)) {
         window.location.href = '../FrontEnd/HTML/login.html'; // Redirect to the allowed page
     }
 });
-
 function prepareDeleteComputer(index) {
     if (computers.length > 0) {
         computerToDeleteIndex = index;
