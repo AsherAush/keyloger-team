@@ -8,7 +8,7 @@ async function fetchComputers() {
             headers: { "Content-Type": "application/json" }
         });
         let data = await response.json();
-        computers = data.computers;
+        computers = data.computers; // קבלת הרשימה מהשרת
         updateComputerList(computers);
     } catch (error) {
         console.error("Error fetching computers:", error);
@@ -28,7 +28,7 @@ async function showComputersList(event) {
     const computerListContainer = document.getElementById('computerListContainer');
     if (computerListContainer.style.display === 'none' || computerListContainer.style.display === '') {
         computerListContainer.style.display = 'block';
-        await fetchComputers();
+        await fetchComputers(); // טוען מחדש את רשימת המחשבים
     } else {
         computerListContainer.style.display = 'none';
     }
