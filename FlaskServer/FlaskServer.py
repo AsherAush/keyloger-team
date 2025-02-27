@@ -1,28 +1,55 @@
-from flask import Flask , request, jsonify
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 import os
 import time
 
-users = [{"name":"shlomo","password":"123"},{"name":"asher","password":"456"},{"name":"arie","password":"789"}]
 app = Flask(__name__)
 CORS(app)
+
 DATA_FOLDER = "data"
+computers = ["Computer1", "Computer2", "Computer3"]
+users = [
+    {"name": "shlomo", "password": "123"},
+    {"name": "asher", "password": "456"},
+    {"name": "arie", "password": "789"}
+]
+
+
 def generate_log_filename():
     return "log_" + time.strftime("%Y-%m-%d_%H-%M-%S") + ".txt"
+
+
 @app.route('/api/login', methods=['POST'])
 def login():
     data = request.get_json()
     if not data or "name" not in data or "password" not in data:
         return jsonify({"error": "Invalid payload"}), 400
+
     for user in users:
         if data["name"] == user["name"] and data["password"] == user["password"]:
             return jsonify({"status": "success"}), 200
+
     return jsonify({"error": "Invalid credentials"}), 401
+
 
 @app.route('/api/computerList', methods=['GET'])
 def get_computer_list():
-    computers = ["Computer1", "Computer2", "Computer3"]  # Replace with your actual computer list
-    return jsonify(computers), 200
+    return jsonify({"computers": computers}), 200
+
+
+@app.route('/api/computerList', methods=['DELETE'])
+def delete_computer():
+    data = request.get_json()
+    if not data or "computer" not in data:
+        return jsonify({"error": "Invalid payload"}), 400
+
+    computer = data["computer"]
+    if computer in computers:
+        computers.remove(computer)
+        return jsonify({"status": "deleted", "computers": computers}), 200
+    else:
+        return jsonify({"error": "Computer not found"}), 404
+
 
 @app.route('/api/upload', methods=['POST'])
 def upload():
@@ -47,4 +74,4 @@ def upload():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
