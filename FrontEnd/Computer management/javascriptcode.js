@@ -1,29 +1,39 @@
-let computers = ["אשר זאב אויש", "שלמה זלמן וינד", "אריה שובר"];
 let computerToDeleteIndex = -1;
+let computers = [];
 
-// הצגת רשימת מחשבים
-function showComputersList(event) {
+async function fetchComputers() {
+    try {
+        let response = await fetch("http://127.0.0.1:5000/api/computerList", {
+            method: "GET",
+            headers: { "Content-Type": "application/json" }
+        });
+        let data = await response.json();
+        computers = data.computers; // קבלת הרשימה מהשרת
+        updateComputerList(computers);
+    } catch (error) {
+        console.error("Error fetching computers:", error);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const allowedReferer = 'login.html';
+    if (!document.referrer.includes(allowedReferer)) {
+        window.location.href = 'login.html';
+    }
+    fetchComputers(); // טוען את רשימת המחשבים בעת טעינת העמוד
+});
+
+async function showComputersList(event) {
     event.preventDefault();
     const computerListContainer = document.getElementById('computerListContainer');
-    // Assuming you want to toggle the visibility of the computer list
     if (computerListContainer.style.display === 'none' || computerListContainer.style.display === '') {
         computerListContainer.style.display = 'block';
+        await fetchComputers(); // טוען מחדש את רשימת המחשבים
     } else {
         computerListContainer.style.display = 'none';
     }
 }
 
-// Close the computer list when clicking outside of it
-document.addEventListener('DOMContentLoaded', function() {
-    const allowedReferer = 'login.html'; // Replace with your allowed referer URL
-    const referer = document.referrer;
-
-    console.log('Referer:', referer); // Log the referer to the console
-
-    if (!referer || !referer.includes(allowedReferer)) {
-        window.location.href = 'login.html'; // Redirect to the allowed page
-    }
-});
 function prepareDeleteComputer(index) {
     if (computers.length > 0) {
         computerToDeleteIndex = index;
@@ -31,10 +41,23 @@ function prepareDeleteComputer(index) {
     }
 }
 
-function confirmDelete() {
-    computers.splice(computerToDeleteIndex, 1);
-    updateComputerList();
-    closePopup();
+async function confirmDelete() {
+    if (computerToDeleteIndex < 0 || computerToDeleteIndex >= computers.length) return;
+    let computerToDelete = computers[computerToDeleteIndex];
+
+    try {
+        await fetch("http://127.0.0.1:5000/api/computerList", {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ computer: computerToDelete })
+        });
+
+        computers.splice(computerToDeleteIndex, 1);
+        updateComputerList(computers);
+        closePopup();
+    } catch (error) {
+        console.error("Error deleting computer:", error);
+    }
 }
 
 function cancelDelete() {
@@ -55,8 +78,6 @@ function showOptionsPopup(computer, index) {
         <button class="close-btn" onclick="closeOptionsPopup(this)">סגור</button>
     `;
     document.body.appendChild(optionsPopup);
-
-    // Center the popup on the screen
     optionsPopup.style.position = 'fixed';
     optionsPopup.style.top = '50%';
     optionsPopup.style.left = '50%';
@@ -73,16 +94,12 @@ function closeOptionsPopup(button) {
     document.body.removeChild(optionsPopup);
 }
 
-function updateComputerList() {
+function updateComputerList(computers) {
     let list = document.getElementById("computers");
     list.innerHTML = "";
-
     computers.forEach((computer, index) => {
         let li = document.createElement("li");
         li.innerHTML = `<button class="computer-btn" onclick="showOptionsPopup('${computer}', ${index})">${computer}</button>`;
         list.appendChild(li);
     });
 }
-
-// Call updateComputerList to display the default computers on page load
-updateComputerList();
